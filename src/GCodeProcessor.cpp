@@ -232,18 +232,6 @@ GCodeHandler *GCodeProcessor::getGCodeHandler(CommandCodeEnum codeEnum)
     handler = G28Handler::getInstance();
   }
 
-  // Edited by Finn:
-  if (codeEnum == F01)
-  {
-    handler = F01Handler::getInstance();
-  }
-
-  // Edited by Finn:
-  if (codeEnum == F02)
-  {
-    handler = F02Handler::getInstance();
-  }
-
   if (codeEnum == F09)
   {
     handler = F09Handler::getInstance();
@@ -306,6 +294,11 @@ GCodeHandler *GCodeProcessor::getGCodeHandler(CommandCodeEnum codeEnum)
   if (codeEnum == F44)
   {
     handler = F44Handler::getInstance();
+  }
+
+  if (codeEnum == F52)
+  {
+    handler = F52Handler::getInstance();
   }
 
   if (codeEnum == F61)

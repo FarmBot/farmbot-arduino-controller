@@ -17,9 +17,6 @@
 #include "G00Handler.h"
 #include "G28Handler.h"
 
-#include "F01Handler.h"   // Edited by Finn
-#include "F02Handler.h"   // Edited by Finn
-
 #include "F09Handler.h"
 
 #include "F11Handler.h"
@@ -41,6 +38,8 @@
 #include "F42Handler.h"
 #include "F43Handler.h"
 #include "F44Handler.h"
+
+#include "F52Handler.h"
 
 #include "F61Handler.h"
 

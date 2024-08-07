@@ -9,7 +9,6 @@ const char parameterValue2Code = 'W';
 const char elementCode = 'E';
 const char timeCode = 'T';
 const char modeCode = 'M';
-const char numberCode = 'N';    // Edited by Finn
 const char msgQueueCode = 'Q';
 
 CommandCodeEnum commandCodeEnum = CODE_UNDEFINED;
@@ -61,18 +60,6 @@ CommandCodeEnum Command::getGCodeEnum(char *code)
   //if (strcmp(code, "F3") == 0 || strcmp(code, "F03") == 0) {
   //	return F03;
   //}
-
-  // Finn: F01 
-  if (strcmp(code, "F01") == 0 || strcmp(code, "F1") == 0)
-  {
-    return F01;
-  }
-
-  // Finn: F02 
-  if (strcmp(code, "F02") == 0 || strcmp(code, "F2") == 0)
-  {
-    return F02;
-  }
 
   if (strcmp(code, "F09") == 0 || strcmp(code, "F9") == 0)
   {
@@ -141,6 +128,11 @@ CommandCodeEnum Command::getGCodeEnum(char *code)
   if (strcmp(code, "F44") == 0)
   {
     return F44;
+  }
+
+  if (strcmp(code, "F52") == 0)
+  {
+    return F52;
   }
 
   if (strcmp(code, "F61") == 0)
@@ -243,13 +235,6 @@ void Command::getParameter(char *charPointer)
     time = atof(charPointer + 1);
   }
 
-  // Edited by Finn
-  if (charPointer[0] == numberCode) {
-    number = atof(charPointer + 1);
-    // Serial.print("Set number to: ");
-    // Serial.println(number);
-  }
-
   if (charPointer[0] == modeCode)
   {
     mode = atof(charPointer + 1);
@@ -287,8 +272,6 @@ void Command::print()
   Serial.print(element);
   Serial.print(", M: ");
   Serial.print(mode);
-  Serial.print(", N: ");
-  Serial.print(number);
 
   Serial.print(", A: ");
   Serial.print(axisSpeedValue[0]);
@@ -366,11 +349,6 @@ long Command::getE()
 long Command::getM()
 {
   return mode;
-}
-
-long Command::getN()  // Edited by Finn
-{
-  return number;
 }
 
 long Command::getQ()
